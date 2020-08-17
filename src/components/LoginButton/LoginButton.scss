@@ -1,0 +1,21 @@
+.login-button-component {
+  .btn {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 16px 48px 18px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 100px;
+    letter-spacing: 1.5px;
+    background-color: var(--green);
+
+    &:hover:not(:disabled) {
+      background-color: var(--light-green);
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+}

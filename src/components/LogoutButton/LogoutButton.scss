@@ -1,0 +1,20 @@
+.logout-button-component {
+  .btn {
+    font-size: 12px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 100px;
+    background-color: var(--bg-secondary);
+    border: 0;
+    font-weight: 600;
+    padding: 8px 16px;
+
+    &:hover:not(:disabled) {
+      background-color: var(--bg-secondary);
+    }
+
+    .icon {
+      margin-right: 8px;
+    }
+  }
+}

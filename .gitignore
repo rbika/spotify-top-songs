@@ -1,0 +1,12 @@
+# npm
+/node_modules
+npm-debug.log*
+
+# production
+/build
+
+# dotenv
+.env
+
+# macOS
+.DS_Store

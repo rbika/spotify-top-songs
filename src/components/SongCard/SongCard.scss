@@ -1,0 +1,47 @@
+.song-card-component {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 12px;
+  position: relative;
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  .album-img {
+    width: 56px;
+    height: 56px;
+    margin-right: 16px;
+  }
+
+  .song-name {
+    font-weight: 700;
+  }
+
+  .song-artist {
+    font-weight: 500;
+    color: var(--fg-secondary);
+    padding: 4px 16px 0 0;
+  }
+
+  .play-button {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+    display: flex;
+    color: var(--fg-secondary);
+  }
+
+  &:hover {
+    .play-button {
+      opacity: 1;
+    }
+  }
+}

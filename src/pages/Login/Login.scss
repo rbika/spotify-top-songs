@@ -1,0 +1,18 @@
+.login-page {
+  margin: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .sub-title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--fg-secondary);
+  }
+}
