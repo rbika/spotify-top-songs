@@ -8,7 +8,7 @@ const LoginView = () => {
     <div className="login-page">
       <p className="title">My Top Songs</p>
       <p className="sub-title">
-        Discover what songs you've been listening to most on Spotify.
+        Discover what songs you've been listening to the most on Spotify.
       </p>
       <LoginButton />
     </div>

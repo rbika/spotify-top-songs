@@ -1,6 +1,8 @@
 # My Top Songs
 
-Discover what songs you've been listening to most on Spotify.
+![](https://github.com/rbika/my-top-songs/workflows/Prod%20Continuous%20Deployment/badge.svg) ![](https://github.com/rbika/my-top-songs/workflows/Staging%20Continuous%20Deployment/badge.svg)
+
+Discover what songs you've been listening to the most on Spotify.
 
 ## Development
 
@@ -71,4 +73,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Add the following secrets
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
-    - CLIENT_ID
+    - SPOTIFY_CLIENT_ID

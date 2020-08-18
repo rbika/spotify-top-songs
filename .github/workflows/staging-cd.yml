@@ -1,0 +1,32 @@
+name: Staging Continuous Deployment
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  buildAndDeploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+        env:
+          REACT_APP_BASE_URL: http://staging.mytopsongs.site
+          REACT_APP_SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_STAGING_CLIENT_ID }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_STAGING_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_STAGING_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Deploy to S3
+        run: aws s3 sync ./build s3://staging.mytopsongs.site --delete
