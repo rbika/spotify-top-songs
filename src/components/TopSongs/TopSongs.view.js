@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button, Modal } from 'react-bootstrap';
 
 import SongCard from '../SongCard';
+import ShareSongs from '../ShareSongs';
 import constants from '../../constants';
 import './TopSongs.scss';
 
@@ -12,13 +13,23 @@ const propTypes = {
 };
 
 const TopSongsView = (props) => {
+  const [showModal, setShowModal] = useState(false);
   const { songs, loading, timeRange } = props;
   const title =
     timeRange === constants.SHORT_TERM ? 'Last month' : 'Last 6 months';
 
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   return !loading ? (
     <div className="top-songs-component">
-      <div className="title">{title}</div>
+      <div className="title">
+        {title}
+        <Button size="sm" className="ml-2" onClick={handleShowModal}>
+          Share
+        </Button>
+      </div>
+
       <Row>
         {songs.map((song, index) => {
           return (
@@ -28,6 +39,17 @@ const TopSongsView = (props) => {
           );
         })}
       </Row>
+
+      <Modal
+        size="sm"
+        className="share-songs-modal"
+        show={showModal}
+        onHide={handleCloseModal}
+      >
+        <Modal.Body>
+          <ShareSongs songs={songs} />
+        </Modal.Body>
+      </Modal>
     </div>
   ) : null;
 };

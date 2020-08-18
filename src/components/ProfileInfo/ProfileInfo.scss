@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 16px;
+  padding-bottom: 24px;
   position: relative;
 
   .user-picture {
@@ -12,38 +12,38 @@
     height: 80px;
   }
 
-  .username {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
-    text-align: center;
-  }
+  .username-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  .title {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 32px;
-    color: var(--fg-secondary);
-  }
+    .username {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      text-align: center;
+    }
 
-  // .logout-button-component {
-  //   position: absolute;
-  //   right: 0;
-  //   top: 12px;
-  // }
+    .logout-button-component {
+      padding-top: 8px;
+    }
+  }
 }
 
-.user-picture-placeholder {
-  width: 80px;
-  height: 80px;
+.profile-loader {
+  font-size: 48px;
   fill: var(--bg-secondary);
-  margin: 0 auto;
   display: block;
+  margin: 0 auto;
+  height: 110px;
+  padding-bottom: 15px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .profile-info-component {
+    border-bottom: 1px solid var(--bg-secondary);
     flex-direction: row;
+    justify-content: center;
 
     .user-picture {
       width: 100px;
@@ -51,21 +51,14 @@
       margin: 0 32px 0 0;
     }
 
-    .username {
-      font-size: 32px;
-      line-height: 40px;
-      text-align: left;
-    }
+    .username-container {
+      align-items: flex-start;
 
-    .title {
-      font-size: 32px;
-      line-height: 40px;
+      .username {
+        font-size: 32px;
+        line-height: 40px;
+        text-align: left;
+      }
     }
-  }
-
-  .user-picture-placeholder {
-    width: 100px;
-    height: 100px;
-    margin: 0;
   }
 }
