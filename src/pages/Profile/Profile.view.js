@@ -11,8 +11,11 @@ const ProfileView = () => {
   return (
     <Container className="profile-page">
       <ProfileInfo className="mb-4" />
-      <TopSongs timeRange={constants.SHORT_TERM} />
-      <TopSongs timeRange={constants.MEDIUM_TERM} />
+
+      <div className="lists-container">
+        <TopSongs timeRange={constants.SHORT_TERM} />
+        <TopSongs timeRange={constants.MEDIUM_TERM} />
+      </div>
     </Container>
   );
 };

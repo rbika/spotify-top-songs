@@ -13,7 +13,7 @@ const constants = {
   AUTH_URL: 'https://accounts.spotify.com/authorize',
   AUTH_SCOPE: 'user-read-private user-read-email user-top-read',
 
-  SONGS_LIMIT: '12',
+  SONGS_LIMIT: '5',
   SHORT_TERM: 'short_term',
   MEDIUM_TERM: 'medium_term',
 };

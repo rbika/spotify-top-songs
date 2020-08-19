@@ -1,0 +1,49 @@
+.song-info-component {
+  display: flex;
+  font-size: 13px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .album-img {
+    width: 64px;
+    height: 64px;
+    margin-right: 16px;
+  }
+
+  .song-info {
+    overflow: hidden;
+
+    .song-name {
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .song-artist {
+      font-weight: 500;
+      color: var(--fg-secondary);
+      padding: 4px 16px 0 0;
+    }
+  }
+
+  .play-button {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+    display: flex;
+    color: var(--fg-secondary);
+    display: none;
+  }
+
+  &:hover {
+    .play-button {
+      opacity: 1;
+    }
+  }
+}
