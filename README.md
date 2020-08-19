@@ -8,6 +8,19 @@ Discover what songs you've been listening to the most on Spotify.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+1. Create a `.env` file at the root of the project and add the following content:
+    ```
+    REACT_APP_BASE_URL=http://localhost:3000
+    REACT_APP_SPOTIFY_CLIENT_ID=your_client_id
+    ```
+
+2. Run the development server:
+    ```
+    npm start
+    ```
+
+3. The app will be running on http://localhost:3000.
+
 ## Deployment config
 
 ### AWS IAM Policy and User
