@@ -1,55 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
-import { Row, Col, Button, Modal } from 'react-bootstrap';
+import { FaSpotify } from 'react-icons/fa';
 
-import SongCard from '../SongCard';
-import ShareSongs from '../ShareSongs';
+import SongCard from '../SongInfo';
 import constants from '../../constants';
 import './TopSongs.scss';
+// import { Button } from 'react-bootstrap';
 
 const propTypes = {
   loading: PropTypes.bool,
 };
 
 const TopSongsView = (props) => {
-  const [showModal, setShowModal] = useState(false);
   const { songs, loading, timeRange } = props;
-  const title =
-    timeRange === constants.SHORT_TERM ? 'Last month' : 'Last 6 months';
-
-  const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  const { SHORT_TERM } = constants;
+  const title = timeRange === SHORT_TERM ? 'Last month' : 'Last 6 months';
 
   return !loading ? (
     <div className="top-songs-component">
       <div className="title">
-        {title}
-        <Button size="sm" className="ml-2" onClick={handleShowModal}>
-          Share
-        </Button>
+        <FaSpotify className="mr-1" /> My Top Songs
       </div>
+      <div className="sub-title">{title}</div>
 
-      <Row>
-        {songs.map((song, index) => {
-          return (
-            <Col key={song.id} sm={6} lg={4} className="mb-4">
-              <SongCard rank={index + 1} song={song} />
-            </Col>
-          );
-        })}
-      </Row>
+      {songs.map((song, index) => {
+        return <SongCard key={song.id} rank={index + 1} song={song} />;
+      })}
 
-      <Modal
-        size="sm"
-        className="share-songs-modal"
-        show={showModal}
-        onHide={handleCloseModal}
-      >
-        <Modal.Body>
-          <ShareSongs songs={songs} />
-        </Modal.Body>
-      </Modal>
+      <div className="site-address">www.mytopsongs.site</div>
+
+      {/* <div className="download-btn-container">
+        <Button>Download</Button>
+        <span>And Share</span>
+      </div> */}
     </div>
   ) : null;
 };
