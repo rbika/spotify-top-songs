@@ -1,6 +1,7 @@
 .top-songs-component {
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
+  padding: 16px 16px 32px;
 
   .title {
     font-weight: 600;
@@ -31,22 +32,5 @@
     letter-spacing: 1px;
     color: var(--fg-secondary);
     padding-top: 8px;
-  }
-
-  .download-btn-container {
-    padding-top: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .btn {
-      border-radius: 100px;
-    }
-  }
-}
-
-@media (min-width: 576px) {
-  .top-songs-component {
-    width: 340px;
   }
 }

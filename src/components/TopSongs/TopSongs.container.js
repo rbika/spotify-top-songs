@@ -9,8 +9,14 @@ import { spotifyApi } from '../../api';
 const TopSongsContainer = (props) => {
   const [loading, setLoading] = useState(true);
   const [songs, setSongs] = useState([]);
-
   const { timeRange } = props;
+  let listTitle;
+
+  if (timeRange === constants.SHORT_TERM) {
+    listTitle = 'Last Month';
+  } else if (timeRange === constants.MEDIUM_TERM) {
+    listTitle = 'Last 6 Month';
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -20,17 +26,13 @@ const TopSongsContainer = (props) => {
       limit: constants.SONGS_LIMIT,
     });
 
-    spotifyApi
-      .get(`/me/top/tracks?${params}`)
-      .then((resp) => {
-        setSongs(resp.data.items);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    spotifyApi.get(`/me/top/tracks?${params}`).then((resp) => {
+      setSongs(resp.data.items);
+      setLoading(false);
+    });
   }, [timeRange]);
 
-  return <TopSongsView timeRange={timeRange} songs={songs} loading={loading} />;
+  return <TopSongsView listTitle={listTitle} songs={songs} loading={loading} />;
 };
 
 export default TopSongsContainer;
