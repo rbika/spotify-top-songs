@@ -26,6 +26,7 @@ const TopSongsContainer = (props) => {
     html2canvas(element, {
       useCORS: true,
       y: element.offsetTop,
+      backgroundColor: '#0d0d0d',
     }).then((canvas) => {
       const link = document.getElementById('image-link');
       link.download = 'test.png';
