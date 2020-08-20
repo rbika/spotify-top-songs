@@ -2,6 +2,11 @@
   width: 100%;
   max-width: 320px;
 
+  .sharableContent {
+    padding: 40px 24px 32px;
+    background-color: var(--bg-primary);
+  }
+
   .title {
     font-weight: 600;
     display: flex;
@@ -34,19 +39,40 @@
   }
 
   .download-btn-container {
-    padding-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     .btn {
       border-radius: 100px;
+      background-color: var(--green);
+      font-weight: 600;
+      border: 0;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 12px 40px;
+      text-transform: uppercase;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border: 0 !important;
+        background-color: var(--light-green) !important;
+        box-shadow: none;
+      }
+    }
+
+    .text {
+      padding: 8px 0;
+      font-size: 14px;
+      font-weight: 600;
     }
   }
 }
 
 @media (min-width: 576px) {
   .top-songs-component {
-    width: 340px;
+    width: 360px;
+    max-width: none;
   }
 }
