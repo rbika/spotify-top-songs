@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import queryString from 'query-string';
-import html2canvas from 'html2canvas';
 
 import constants from '../../constants';
 import TopSongsView from './TopSongs.view';
@@ -11,29 +10,13 @@ const TopSongsContainer = (props) => {
   const [loading, setLoading] = useState(true);
   const [songs, setSongs] = useState([]);
   const { timeRange } = props;
-  let elementId, listTitle;
+  let listTitle;
 
   if (timeRange === constants.SHORT_TERM) {
     listTitle = 'Last Month';
-    elementId = 'short-term-list-container';
   } else if (timeRange === constants.MEDIUM_TERM) {
     listTitle = 'Last 6 Month';
-    elementId = 'medium-term-list-container';
   }
-
-  const handleDownloadClick = () => {
-    const element = document.getElementById(elementId);
-    html2canvas(element, {
-      useCORS: true,
-      y: element.offsetTop,
-      backgroundColor: '#0d0d0d',
-    }).then((canvas) => {
-      const link = document.getElementById('image-link');
-      link.download = 'test.png';
-      link.href = canvas.toDataURL();
-      link.click();
-    });
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -49,15 +32,7 @@ const TopSongsContainer = (props) => {
     });
   }, [timeRange]);
 
-  return (
-    <TopSongsView
-      listTitle={listTitle}
-      elementId={elementId}
-      songs={songs}
-      loading={loading}
-      onDownloadClick={handleDownloadClick}
-    />
-  );
+  return <TopSongsView listTitle={listTitle} songs={songs} loading={loading} />;
 };
 
 export default TopSongsContainer;
