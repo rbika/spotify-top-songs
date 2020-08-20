@@ -34,6 +34,9 @@ const TopSongsView = (props) => {
       <div className="download-btn-container">
         <Button onClick={onDownloadClick}>Download</Button>
         <span className="text">And Share</span>
+        <a href="/" class="hidden-img-link" id="image-link">
+          Image Link
+        </a>
       </div>
     </div>
   ) : null;

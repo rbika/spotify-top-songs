@@ -43,6 +43,10 @@
     flex-direction: column;
     align-items: center;
 
+    .hidden-img-link {
+      display: none;
+    }
+
     .btn {
       border-radius: 100px;
       background-color: var(--green);

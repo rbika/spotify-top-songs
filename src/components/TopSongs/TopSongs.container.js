@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import queryString from 'query-string';
 import html2canvas from 'html2canvas';
-import { saveAs } from 'file-saver';
 
 import constants from '../../constants';
 import TopSongsView from './TopSongs.view';
@@ -23,14 +22,15 @@ const TopSongsContainer = (props) => {
   }
 
   const handleDownloadClick = () => {
-    const element = document.querySelector(`#${elementId}`);
+    const element = document.getElementById(elementId);
     html2canvas(element, {
       useCORS: true,
       y: element.offsetTop,
     }).then((canvas) => {
-      canvas.toBlob((blob) => {
-        saveAs(blob, 'my-top-songs.png');
-      });
+      const link = document.getElementById('image-link');
+      link.download = 'test.png';
+      link.href = canvas.toDataURL();
+      link.click();
     });
   };
 
