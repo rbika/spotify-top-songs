@@ -1,4 +1,4 @@
-name: Staging Continuous Deployment
+name: CD Staging
 
 on:
   push:
