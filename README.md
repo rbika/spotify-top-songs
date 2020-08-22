@@ -47,6 +47,9 @@ Discover what songs you've been listening to the most on Spotify.
 
 1. In the Github project's page, go to Settings → Secrets → Add new secret.
 2. Add the following secrets with their respective values:
-    - AWS_STAGING_ACCESS_KEY_ID
-    - AWS_STAGING_SECRET_ACCESS_KEY
-    - SPOTIFY_STAGING_CLIENT_ID
+    - `AWS_PROD_ACCESS_KEY_ID`
+    - `AWS_PROD_SECRET_ACCESS_KEY`
+    - `SPOTIFY_PROD_CLIENT_ID`
+    - `AWS_STAGING_ACCESS_KEY_ID`
+    - `AWS_STAGING_SECRET_ACCESS_KEY`
+    - `SPOTIFY_STAGING_CLIENT_ID`
