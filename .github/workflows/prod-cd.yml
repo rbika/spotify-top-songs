@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          REACT_APP_BASE_URL: http://mytopsongs.site
+          REACT_APP_BASE_URL: https://mytopsongs.site
           REACT_APP_SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_PROD_CLIENT_ID }}
 
       - name: Configure AWS credentials
