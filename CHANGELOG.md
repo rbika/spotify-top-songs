@@ -1,7 +1,10 @@
 # Changelog
 
+## v1.1.3 (2020-08-24)
+**improvement** - Layout improvement  
+
 ## v1.1.2 (2020-08-23)
-**improvement** - Layout improvement   
+**improvement** - Layout improvement  
 
 ## v1.1.1 (2020-08-23)
 **fix** - Fixes album image size on Safari   
