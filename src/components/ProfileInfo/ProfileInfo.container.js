@@ -6,14 +6,20 @@ import ProfileInfoView from './ProfileInfo.view';
 
 function ProfileInfoContainer() {
   const [profile, setProfile] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    spotifyApi.get('/me').then((resp) => {
-      setProfile(resp.data);
-    });
+    spotifyApi
+      .get('/me')
+      .then((resp) => {
+        setProfile(resp.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  return <ProfileInfoView profile={profile} />;
+  return <ProfileInfoView profile={profile} loading={loading} />;
 }
 
 export default ProfileInfoContainer;

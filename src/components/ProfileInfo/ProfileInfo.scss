@@ -5,11 +5,25 @@
   padding-bottom: 24px;
   position: relative;
 
-  .user-picture {
-    border-radius: 50%;
-    margin: 0 0 16px 0;
+  .user-picture-container {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    margin: 0 0 16px 0;
+    color: var(--bg-secondary);
+
+    .user-picture {
+      width: 100%;
+      height: 100%;
+    }
+
+    .user-picture-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-primary);
+    }
   }
 
   .username-container {
@@ -36,7 +50,6 @@
   display: block;
   margin: 0 auto;
   height: 110px;
-  padding-bottom: 15px;
 }
 
 @media (min-width: 768px) {
@@ -45,9 +58,9 @@
     flex-direction: row;
     justify-content: center;
 
-    .user-picture {
-      width: 100px;
-      height: 100px;
+    .user-picture-container {
+      width: 90px;
+      height: 90px;
       margin: 0 32px 0 0;
     }
 

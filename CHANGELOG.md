@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.4 (2020-08-24)
+**fix** - Fixes layout for users without profile image  
+
 ## v1.1.3 (2020-08-24)
 **improvement** - Layout improvement  
 
