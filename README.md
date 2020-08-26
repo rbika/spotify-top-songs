@@ -9,6 +9,8 @@ Discover what songs you've been listening to the most on Spotify.
 
 [mytopsongs.site](https://mytopsongs.site)
 
+![](./screenshot.png)
+
 ## Development
 
 1. Follow [these instructions](https://developer.spotify.com/documentation/general/guides/app-settings/) to register an app in the Spotify for Developers and get a client ID.
