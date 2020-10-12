@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import queryString from 'query-string';
 
@@ -6,33 +6,59 @@ import constants from '../../constants';
 import TopSongsView from './TopSongs.view';
 import { spotifyApi } from '../../api';
 
-const TopSongsContainer = (props) => {
-  const [loading, setLoading] = useState(true);
-  const [songs, setSongs] = useState([]);
-  const { timeRange } = props;
-  let listTitle;
+const initialState = {
+  status: 'pending',
+  data: [],
+  error: null,
+};
 
-  if (timeRange === constants.SHORT_TERM) {
-    listTitle = 'Last Month';
-  } else if (timeRange === constants.MEDIUM_TERM) {
-    listTitle = 'Last 6 Month';
+function topSongsReducer(state, action) {
+  const { type, payload } = action;
+
+  if (type === 'pending') {
+    return { ...state, status: 'pending', error: null, data: [] };
   }
 
-  useEffect(() => {
-    setLoading(true);
+  if (type === 'resolved') {
+    return { ...state, status: 'resolved', error: null, data: payload };
+  }
 
-    const params = queryString.stringify({
-      time_range: timeRange,
-      limit: constants.SONGS_LIMIT,
-    });
+  if (type === 'rejected') {
+    return { ...state, status: 'rejected', error: payload, data: [] };
+  }
 
-    spotifyApi.get(`/me/top/tracks?${params}`).then((resp) => {
-      setSongs(resp.data.items);
-      setLoading(false);
-    });
+  throw Error(`Unhandled action type: ${action.type}`);
+}
+
+export function useTopSongs(timeRange) {
+  const [state, dispatch] = React.useReducer(topSongsReducer, initialState);
+
+  React.useEffect(() => {
+    async function effect() {
+      const params = queryString.stringify({
+        time_range: timeRange,
+        limit: constants.SONGS_LIMIT,
+      });
+      dispatch({ type: 'pending' });
+      try {
+        const resp = await spotifyApi.get(`/me/top/tracks?${params}`);
+        dispatch({ type: 'resolved', payload: resp.data.items });
+      } catch (err) {
+        dispatch({ type: 'rejected', payload: err.message });
+      }
+    }
+    effect();
   }, [timeRange]);
 
-  return <TopSongsView listTitle={listTitle} songs={songs} loading={loading} />;
-};
+  return state;
+}
+
+function TopSongsContainer({ timeRange }) {
+  const state = useTopSongs(timeRange);
+  const { SHORT_TERM } = constants;
+  let title = timeRange === SHORT_TERM ? 'Last Month' : 'Last 6 Month';
+
+  return <TopSongsView title={title} {...state} />;
+}
 
 export default TopSongsContainer;
