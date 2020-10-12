@@ -7,32 +7,43 @@ import LogoutButton from '../LogoutButton';
 import './ProfileInfo.scss';
 
 const propTypes = {
-  profile: PropTypes.object.isRequired,
-  loading: PropTypes.bool,
+  data: PropTypes.object,
+  status: PropTypes.string,
+  error: PropTypes.string,
 };
 
-const ProfileInfoView = (props) => {
-  const { loading, profile } = props;
-  const { display_name: displayName, images } = profile;
-
-  return !loading ? (
-    <div className="profile-info-component">
-      <div className="user-picture-container">
-        {images?.length ? (
-          <img alt="user" className="user-picture" src={images[0].url} />
-        ) : (
-          <FaUserCircle className="user-picture-placeholder" />
-        )}
-      </div>
-      <div className="username-container">
-        <div className="username">{displayName}</div>
-        <LogoutButton />
-      </div>
+function ProfileImage({ images }) {
+  return (
+    <div className="user-picture-container">
+      {images?.length ? (
+        <img alt="user" className="user-picture" src={images[0].url} />
+      ) : (
+        <FaUserCircle className="user-picture-placeholder" />
+      )}
     </div>
-  ) : (
-    <FaSpinner className="profile-loader spin" />
   );
-};
+}
+
+function ProfileInfoView(props) {
+  const { data: profile, status, error } = props;
+
+  if (status === 'pending') {
+    return <FaSpinner className="profile-loader spin" />;
+  } else if (status === 'resolved') {
+    const { display_name: displayName, images } = profile;
+    return (
+      <div className="profile-info-component">
+        <ProfileImage images={images} />
+        <div className="username-container">
+          <div className="username">{displayName}</div>
+          <LogoutButton />
+        </div>
+      </div>
+    );
+  } else if (status === 'rejected') {
+    return <p>{error}</p>;
+  }
+}
 
 ProfileInfoView.propTypes = propTypes;
 export default ProfileInfoView;
