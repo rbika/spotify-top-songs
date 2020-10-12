@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.5 (2020-10-12)
+**improvement** - Improves data fetching logic
+
 ## v1.1.4 (2020-08-24)
 **fix** - Fixes layout for users without profile image  
 
