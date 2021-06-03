@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import { navigate } from '@reach/router';
 
-import LoginView from './Login.view';
+import LoginButton from '../../components/LoginButton';
 import constants from '../../constants';
+
+import './Login.scss';
 
 const LoginContainer = (props) => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +22,15 @@ const LoginContainer = (props) => {
     }
   }, [accessToken, loading]);
 
-  return !loading ? <LoginView /> : null;
+  return !loading ? (
+    <div className="login-page">
+      <p className="title">My Top Songs</p>
+      <p className="sub-title">
+        Discover what songs you've been listening to the most on Spotify.
+      </p>
+      <LoginButton />
+    </div>
+  ) : null;
 };
 
 export default LoginContainer;

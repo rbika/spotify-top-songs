@@ -1,3 +1,3 @@
-import ProfileInfoContainer from './ProfileInfo.container';
+import ProfileInfo from './ProfileInfo';
 
-export default ProfileInfoContainer;
+export default ProfileInfo;

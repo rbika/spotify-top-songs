@@ -1,3 +1,3 @@
-import TopSongsContainer from './TopSongs.container';
+import TopSongs from './TopSongs';
 
-export default TopSongsContainer;
+export default TopSongs;

@@ -1,3 +1,3 @@
-import SongInfoContainer from './SongInfo.container';
+import SongInfo from './SongInfo';
 
-export default SongInfoContainer;
+export default SongInfo;

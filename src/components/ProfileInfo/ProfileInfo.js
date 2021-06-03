@@ -1,16 +1,12 @@
 import React from 'react';
 
-import PropTypes from 'prop-types';
+import { spotifyApi } from '../../api';
+
 import { FaSpinner, FaUserCircle } from 'react-icons/fa';
 
 import LogoutButton from '../LogoutButton';
 import './ProfileInfo.scss';
-
-const propTypes = {
-  data: PropTypes.object,
-  status: PropTypes.string,
-  error: PropTypes.string,
-};
+import useAsync from '../../hooks/useAsync';
 
 function ProfileImage({ images }) {
   return (
@@ -24,13 +20,17 @@ function ProfileImage({ images }) {
   );
 }
 
-function ProfileInfoView(props) {
-  const { data: profile, status, error } = props;
+function ProfileInfoContainer() {
+  const { status, error, data, run } = useAsync();
 
-  if (status === 'pending') {
+  React.useEffect(() => {
+    run(spotifyApi.get('/me'));
+  }, [run]);
+
+  if (status === 'pending' || status === 'idle') {
     return <FaSpinner className="profile-loader spin" />;
   } else if (status === 'resolved') {
-    const { display_name: displayName, images } = profile;
+    const { display_name: displayName, images } = data;
     return (
       <div className="profile-info-component">
         <ProfileImage images={images} />
@@ -45,5 +45,4 @@ function ProfileInfoView(props) {
   }
 }
 
-ProfileInfoView.propTypes = propTypes;
-export default ProfileInfoView;
+export default ProfileInfoContainer;

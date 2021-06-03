@@ -1,3 +1,3 @@
-import LoginButtonContainer from './LoginButton.container';
+import LoginButton from './LoginButton';
 
-export default LoginButtonContainer;
+export default LoginButton;

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import constants from '../../constants';
 import queryString from 'query-string';
-import LoginButtonView from './LoginButton.view';
+import { Button } from 'react-bootstrap';
 
-const LoginButtonContainer = () => {
+const LoginButton = () => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
@@ -18,7 +18,18 @@ const LoginButtonContainer = () => {
     window.open(`${constants.AUTH_URL}?${params}`, '_self');
   };
 
-  return <LoginButtonView onClick={handleClick} loading={loading} />;
+  return (
+    <div className="login-button-component">
+      <Button
+        variant="success"
+        className="d-flex align-items-center"
+        onClick={handleClick}
+        disabled={loading}
+      >
+        Log in to Spotify
+      </Button>
+    </div>
+  );
 };
 
-export default LoginButtonContainer;
+export default LoginButton;
