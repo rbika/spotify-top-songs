@@ -1,13 +1,12 @@
 import React from 'react';
-
 import { Container } from 'react-bootstrap';
-
 import TopSongs from '../../components/TopSongs';
 import constants from '../../constants';
 import ProfileInfo from '../../components/ProfileInfo';
+
 import './Profile.scss';
 
-const ProfileView = () => {
+const ProfileContainer = () => {
   return (
     <Container className="profile-page">
       <ProfileInfo className="mb-4" />
@@ -20,4 +19,4 @@ const ProfileView = () => {
   );
 };
 
-export default ProfileView;
+export default ProfileContainer;
